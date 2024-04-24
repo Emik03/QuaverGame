@@ -392,6 +392,7 @@ namespace Quaver.Shared.Database.Maps
             }
 
             Mapsets.Remove(mapset);
+            mapset.Maps.ForEach(PlaylistManager.RemoveMapFromAllPlaylists);
 
             // Raise an event letting subscribers know a mapset has been deleted
             MapsetDeleted?.Invoke(typeof(MapManager), new MapsetDeletedEventArgs(mapset, index));
